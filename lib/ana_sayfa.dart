@@ -5,14 +5,14 @@ class AnaSayfa extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.min,
-        // crossAxisAlignment: CrossAxisAlignment.start,
+      body: Row(
         children: [
           Container(width: 50, height: 50, color: Colors.red),
+          SizedBox(height: 10, width: 10),
           Container(width: 50, height: 50, color: Colors.blue),
+          SizedBox(height: 20, width: 20),
           Container(width: 50, height: 50, color: Colors.green),
+          SizedBox(width: 30, height: 30),
           Container(width: 50, height: 50, color: Colors.green),
         ],
       ),
