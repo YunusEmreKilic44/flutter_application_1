@@ -17,17 +17,17 @@ class _AnaSayfaState extends State<AnaSayfa> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(_sayac.toString(), style: TextStyle(fontSize: 48)),
-            OutlinedButton(
+            TextButton(
               onPressed: _buttonTiklandi,
               onLongPress: () {
                 print("Butona uzun basıldı");
               },
-              style: OutlinedButton.styleFrom(
+              style: TextButton.styleFrom(
                 // backgroundColor: Colors.green,
-                side: BorderSide(color: Colors.red),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                elevation: 10,
-                foregroundColor: Colors.green,
+                // side: BorderSide(color: Colors.red),
+                // padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                // elevation: 10,
+                foregroundColor: Colors.red,
                 // shape: RoundedRectangleBorder(
                 //   borderRadius: BorderRadius.circular(10),
                 // ),
