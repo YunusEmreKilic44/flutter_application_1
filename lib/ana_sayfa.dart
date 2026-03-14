@@ -17,23 +17,26 @@ class _AnaSayfaState extends State<AnaSayfa> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(_sayac.toString(), style: TextStyle(fontSize: 48)),
-            ElevatedButton.icon(
-              icon: Icon(Icons.watch),
+            OutlinedButton(
               onPressed: _buttonTiklandi,
               onLongPress: () {
                 print("Butona uzun basıldı");
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+              style: OutlinedButton.styleFrom(
+                // backgroundColor: Colors.green,
+                side: BorderSide(color: Colors.red),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 elevation: 10,
+                foregroundColor: Colors.green,
                 // shape: RoundedRectangleBorder(
                 //   borderRadius: BorderRadius.circular(10),
                 // ),
                 // shape: StadiumBorder(),
-                shape: CircleBorder(),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-              label: Text("A", style: TextStyle(fontSize: 24)),
+              child: Text("Sayacı Arttır", style: TextStyle(fontSize: 24)),
             ),
           ],
         ),
