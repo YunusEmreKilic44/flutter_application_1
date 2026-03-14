@@ -15,17 +15,15 @@ class _AnaSayfaState extends State<AnaSayfa> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(_sayac.toString(), style: TextStyle(fontSize: 48)),
-            IconButton(
-              onPressed: _buttonTiklandi,
-              icon: Icon(Icons.check_circle),
-              iconSize: 100,
-              color: Colors.green,
-            ),
-          ],
+          children: [Text(_sayac.toString(), style: TextStyle(fontSize: 48))],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _buttonTiklandi,
+        child: Icon(Icons.add),
+        heroTag: "Ana Sayfa FAB",
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
     );
   }
 
