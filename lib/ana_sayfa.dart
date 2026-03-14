@@ -1,20 +1,48 @@
 import 'package:flutter/material.dart';
 
-class AnaSayfa extends StatelessWidget {
+class AnaSayfa extends StatefulWidget {
+  @override
+  State<AnaSayfa> createState() => _AnaSayfaState();
+}
+
+class _AnaSayfaState extends State<AnaSayfa> {
+  int _sayac = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CircleAvatar(
-        // backgroundImage: AssetImage("assets/genshin.jpg"),
-        backgroundImage: NetworkImage(
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZOftRTn9fcf_YCa6bClb3A8rZb0BsLlyg-B36BEQBAMfRffPBZkeyfji1lJp9HaHZYzniYtzt0Th9yASaEdmKLAZdXxUn4KNe-hziCUSw&s=10",
-        ),
-        radius: 150,
-        child: Text(
-          "Circle Avatar",
-          style: TextStyle(color: Colors.black, fontSize: 48),
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(_sayac.toString(), style: TextStyle(fontSize: 48)),
+            ElevatedButton(
+              onPressed: _buttonTiklandi,
+              onLongPress: () {
+                print("Butona uzun basıldı");
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                elevation: 10,
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(10),
+                // ),
+                // shape: StadiumBorder(),
+                shape: CircleBorder(),
+              ),
+              child: Text("A", style: TextStyle(fontSize: 24)),
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  void _buttonTiklandi() {
+    setState(() {
+      _sayac++;
+    });
   }
 }
