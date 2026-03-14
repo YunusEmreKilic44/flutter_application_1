@@ -17,7 +17,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(_sayac.toString(), style: TextStyle(fontSize: 48)),
-            ElevatedButton(
+            ElevatedButton.icon(
+              icon: Icon(Icons.watch),
               onPressed: _buttonTiklandi,
               onLongPress: () {
                 print("Butona uzun basıldı");
@@ -32,7 +33,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                 // shape: StadiumBorder(),
                 shape: CircleBorder(),
               ),
-              child: Text("A", style: TextStyle(fontSize: 24)),
+              label: Text("A", style: TextStyle(fontSize: 24)),
             ),
           ],
         ),
