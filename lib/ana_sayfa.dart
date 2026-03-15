@@ -23,6 +23,6 @@ class AnaSayfa extends StatelessWidget {
         return IkinciSayfa();
       },
     );
-    Navigator.push(context, sayfaYolu);
+    Navigator.pushReplacement(context, sayfaYolu);
   }
 }
