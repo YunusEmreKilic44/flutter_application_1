@@ -18,25 +18,21 @@ class AnaSayfa extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: _sehirler.length,
-          itemBuilder: _listeOgesiniOlustur,
-        ),
+      body: ListView.builder(
+        itemCount: _sehirler.length,
+        itemBuilder: _listeOgesiniOlustur,
       ),
     );
   }
 
   Widget _listeOgesiniOlustur(BuildContext context, int index) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(_sehirler[index].isim),
-        SizedBox(height: 8),
-        Text(_sehirler[index].nufus.toString()),
-        SizedBox(height: 32),
-      ],
+    return Card(
+      child: ListTile(
+        title: Text(_sehirler[index].isim),
+        subtitle: Text(_sehirler[index].nufus.toString()),
+        trailing: Text(_sehirler[index].plakaKodu.toString()),
+        leading: Icon(Icons.location_city),
+      ),
     );
   }
 }
