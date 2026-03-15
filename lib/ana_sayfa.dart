@@ -6,7 +6,11 @@ class AnaSayfa extends StatefulWidget {
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
-  int _sayac = 0;
+  String _textYazisi = "Başlangıç Yazısı";
+
+  // String _textFieldYazisi = "";
+
+  TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -14,22 +18,62 @@ class _AnaSayfaState extends State<AnaSayfa> {
       appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text(_sayac.toString(), style: TextStyle(fontSize: 48))],
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: TextField(
+                controller: _controller,
+                keyboardType: TextInputType.emailAddress,
+                maxLines: 1,
+                minLines: 1,
+                textAlign: TextAlign.start,
+                textDirection: TextDirection.ltr,
+                obscureText: true, //Password icin kullanılıyor
+                enabled: true,
+                autofocus: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  labelText: "Adınızı giriniz",
+                  contentPadding: EdgeInsets.all(40),
+                  counterText: "Bir metin girin",
+                  counterStyle: TextStyle(color: Colors.red),
+                  counter: Icon(Icons.message),
+                  // filled: true,
+                  // fillColor: Colors.green,
+                  // hintText: "Adınız",
+                  hintStyle: TextStyle(color: Colors.red),
+                  // prefix: Icon(Icons.add),
+                  prefixIcon: Icon(Icons.add),
+                  prefixText: "A",
+                  // suffix: Icon(Icons.ac_unit),
+                  suffixIcon: Icon(Icons.ac_unit),
+                  suffixText: "BBB",
+                ),
+
+                // onChanged: _textFieldDegisti
+              ),
+            ),
+            Text(_textYazisi),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _textYazisi = _controller.text;
+                });
+              },
+              child: Text("Yazıyı Degiştir"),
+            ),
+          ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _buttonTiklandi,
-        child: Icon(Icons.add),
-        heroTag: "Ana Sayfa FAB",
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
     );
   }
 
-  void _buttonTiklandi() {
-    setState(() {
-      _sayac++;
-    });
-  }
+  // void _textFieldDegisti(String yeniYazi) {
+  //   setState(() {
+  //     _textYazisi = yeniYazi;
+  //   });
+  // }
 }
