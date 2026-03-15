@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class AnaSayfa extends StatefulWidget {
@@ -6,64 +8,50 @@ class AnaSayfa extends StatefulWidget {
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
-  String _textYazisi = "Başlangıç Yazısı";
+  double _sonuc = 0;
 
-  // String _textFieldYazisi = "";
+  TextEditingController _boyController = TextEditingController();
 
-  TextEditingController _controller = TextEditingController();
+  TextEditingController _kiloController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
+      appBar: AppBar(title: Text("Vücut Kitle Indexi")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: TextField(
-                controller: _controller,
-                keyboardType: TextInputType.emailAddress,
-                maxLines: 1,
-                minLines: 1,
-                textAlign: TextAlign.start,
-                textDirection: TextDirection.ltr,
-                obscureText: true, //Password icin kullanılıyor
-                enabled: true,
-                autofocus: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  labelText: "Adınızı giriniz",
-                  contentPadding: EdgeInsets.all(40),
-                  counterText: "Bir metin girin",
-                  counterStyle: TextStyle(color: Colors.red),
-                  counter: Icon(Icons.message),
-                  // filled: true,
-                  // fillColor: Colors.green,
-                  // hintText: "Adınız",
-                  hintStyle: TextStyle(color: Colors.red),
-                  // prefix: Icon(Icons.add),
-                  prefixIcon: Icon(Icons.add),
-                  prefixText: "A",
-                  // suffix: Icon(Icons.ac_unit),
-                  suffixIcon: Icon(Icons.ac_unit),
-                  suffixText: "BBB",
+            Text(_sonuc.toStringAsFixed(2), style: TextStyle(fontSize: 48)),
+            SizedBox(height: 16),
+            TextField(
+              controller: _boyController,
+              decoration: InputDecoration(
+                label: Text("Boyunuz"),
+                suffixText: "m",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
                 ),
-
-                // onChanged: _textFieldDegisti
               ),
             ),
-            Text(_textYazisi),
+            SizedBox(height: 16),
+            TextField(
+              controller: _kiloController,
+              decoration: InputDecoration(
+                label: Text("Kilonuz"),
+                suffixText: "kg",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _textYazisi = _controller.text;
-                });
-              },
-              child: Text("Yazıyı Degiştir"),
+              onPressed: _hesapla,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Hesapla", style: TextStyle(fontSize: 24)),
+              ),
             ),
           ],
         ),
@@ -71,9 +59,19 @@ class _AnaSayfaState extends State<AnaSayfa> {
     );
   }
 
-  // void _textFieldDegisti(String yeniYazi) {
-  //   setState(() {
-  //     _textYazisi = yeniYazi;
-  //   });
-  // }
+  void _hesapla() {
+    String boyText = _boyController.text.trim();
+    String kiloText = _kiloController.text.trim();
+
+    try {
+      double boy = double.parse(boyText);
+      double kilo = double.parse(kiloText);
+
+      setState(() {
+        _sonuc = kilo / (boy * boy);
+      });
+    } catch (e) {
+      print("Bir hata oluştu: ${e.toString()}");
+    }
+  }
 }
