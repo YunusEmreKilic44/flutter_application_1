@@ -7,54 +7,18 @@ class AnaSayfa extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          Text("Liste Başı: ", style: TextStyle(fontSize: 32)),
           Expanded(
-            child: ListView(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.red,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.blue,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.green,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.red,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.blue,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.green,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.red,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.blue,
-                ),
-              ],
-            ),
+            child: Container(width: double.infinity, color: Colors.red),
+            flex: 1,
           ),
-          Text("Liste Sonu", style: TextStyle(fontSize: 32)),
+          Expanded(
+            child: Container(width: double.infinity, color: Colors.blue),
+            flex: 2,
+          ),
+          Expanded(
+            child: Container(width: double.infinity, color: Colors.green),
+            flex: 3,
+          ),
         ],
       ),
     );
