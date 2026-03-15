@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class IkinciSayfa extends StatelessWidget {
+  String _yaziIcerigi;
+
+  IkinciSayfa(this._yaziIcerigi);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,11 +13,11 @@ class IkinciSayfa extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("İkinci Sayfa", style: TextStyle(fontSize: 36)),
+            Text(_yaziIcerigi, style: TextStyle(fontSize: 36)),
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context, "İkinci sayfadan gelen veri");
               },
               child: Text(
                 "Ilk sayfaya geri dön",
